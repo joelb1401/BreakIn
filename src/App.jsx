@@ -1,17 +1,32 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Game from "./components/Game";
-import Portfolio from "./Portfolio.jsx";
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from './contexts/AuthContext';
+import { ProfileProvider } from './contexts/ProfileContext';
+import Navbar from "./components/Navbar.jsx";
+import Hero from "./components/Hero.jsx";
+import About from "./components/About.jsx";
+import Search from "./components/Search.jsx";
+import Profile from "./components/Profile.jsx";
+import Contact from "./components/Contact.jsx";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/Portfolio/" element={<Game />} />
-        <Route path="/Portfolio/portfolio" element={<Portfolio />} />
-        <Route path="*" element={<Navigate to="/Portfolio/" replace />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <ProfileProvider>
+        <BrowserRouter>
+          <div className='relative z-0 bg-primary'>
+            <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
+              <Navbar/>
+              <Hero/>
+            </div>
+            <About/>
+            <Search/>
+            <Profile/>
+            <Contact/>
+          </div>
+        </BrowserRouter>
+      </ProfileProvider>
+    </AuthProvider>
   );
 };
 

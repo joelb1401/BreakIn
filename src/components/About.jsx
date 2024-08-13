@@ -11,7 +11,7 @@ const ServiceCard = ({ index, title, icon }) => (
   <Tilt className='xs:w-[250px] w-full'>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+      className='w-full green-purple-gradient p-[1px] rounded-[20px] shadow-card'
     >
       <div
         options={{
@@ -39,26 +39,53 @@ const About = () => {
   return (
       <>
           <motion.div variants={textVariant()}>
-              <p className={styles.sectionSubText}>Introduction</p>
-              <h2 className={styles.sectionHeadText}>Overview.</h2>
+              <h2 className={styles.sectionHeadText}>Break<span className='text-[#4FC3F7]'>In</span>.</h2>
           </motion.div>
 
           <motion.p
               variants={fadeIn("", "", 0.1, 1)}
-              className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
+              className='mt-3 mb-8 text-[17px] leading-[30px] text-center'
           >
-              I'm a skilled mathematician with a particular interest in probability and its
-              financial implications. I have some of the top grades in my cohort with an 85%
-              overall average grade and a 97% average grade across my last three probability
-              modules. I give 100% effort in everything that I do, and I'm passionate
-              about putting my skills and work ethic to good use in the finance industry,
-              with the hope of having a purposeful and impactful career. Below are some of my interests:
+              Break<span className='text-[#4FC3F7]'>In</span> is a service that finds the <span
+              className='text-[#4FC3F7]'>industry professionals</span> most
+              relevant to you. You can then connect with these professionals and reach out to them to <span
+              className='text-[#4FC3F7]'>gain
+              an edge</span> in your industry.
           </motion.p>
 
-          <div className='mt-20 flex flex-wrap gap-10'>
+          <motion.p
+              variants={fadeIn("", "", 0.1, 1)}
+              className='mt-3 mb-8 text-[17px] leading-[30px] text-center'
+          >
+              We also use AI to write the <span className='text-[#4FC3F7]'>perfect message</span> to kickstart your
+              relationship
+              with your newest connection, utilizing everything that you have in common.
+
+          </motion.p>
+
+          <div className='mt-20 flex flex-wrap justify-center gap-10'>
               {services.map((service, index) => (
                   <ServiceCard key={service.title} index={index} {...service} />
               ))}
+          </div>
+
+          <div className="flex justify-center mt-20">
+              <a href='#search'>
+                  <div
+                      className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
+                      <motion.div
+                          animate={{
+                              y: [0, 24, 0],
+                          }}
+                          transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              repeatType: "loop",
+                          }}
+                          className='w-3 h-3 rounded-full bg-secondary mb-1'
+                      />
+                  </div>
+              </a>
           </div>
       </>
   );
